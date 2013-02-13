@@ -42,6 +42,7 @@ object MementoManagement {
     createNewMementoState()
     undoStack.clear()
     objectHash = new HashMap[Memento,StateObject]()
+    currentTimeStamp = 0
   }
   
   /**
