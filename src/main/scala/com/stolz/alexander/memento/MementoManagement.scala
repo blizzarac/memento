@@ -41,7 +41,7 @@ object MementoManagement {
   def resetMementoManagement() {
     createNewMementoState()
     undoStack.clear()
-    objectHash = new HashMap[Memento,StateObject]()
+    objectHash.clear()
     currentTimeStamp = 0
   }
   
@@ -50,7 +50,7 @@ object MementoManagement {
    */
   def createNewMementoState() {
     undoStack.push(objectHash)
-    objectHash = new HashMap[Memento,StateObject]() 
+    objectHash.clear()
     currentTimeStamp += 1
   }
   
@@ -63,7 +63,6 @@ object MementoManagement {
    * Revert to the previous saved state
    */
   def undo() {
-    if (!objectHash.isEmpty) new MementoException("Nothing persisted")
     if (undoStack.isEmpty) new MementoException("Nothing to undo")
     
     var lastState = undoStack.pop()
